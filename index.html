@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Salary Studio</title>
+<title>xromosev</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg: #1a1a1a; --surface: #222; --surface2: #2a2a2a; --surface3: #313131;
+  --bg: #0e0e0e; --surface: #161616; --surface2: #1e1e1e; --surface3: #262626;
   --border: rgba(255,255,255,0.08); --border2: rgba(255,255,255,0.14);
   --text: #f0ede8; --muted: #888; --muted2: #aaa;
-  --accent: #c8f55a; --accent2: #5af5c8; --accent3: #f5a85a; --red: #f55a5a;
-  --mono: 'DM Mono', monospace; --sans: 'Syne', sans-serif;
+  --accent: #E85A2F; --accent2: #5af5c8; --accent3: #f5a85a; --red: #f55a5a;
+  --mono: 'DM Mono', monospace; --sans: 'Manrope', sans-serif;
 }
 body { background: var(--bg); color: var(--text); font-family: var(--sans); min-height: 100vh; }
 
@@ -41,7 +41,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); min-
 }
 .login-field input:focus { border-color: var(--accent); }
 .login-btn {
-  width: 100%; padding: 12px; background: var(--accent); color: #111; border: none;
+  width: 100%; padding: 12px; background: var(--accent); color: #fff; border: none;
   border-radius: 8px; font-family: var(--sans); font-size: 15px; font-weight: 700;
   cursor: pointer; transition: opacity 0.15s;
 }
@@ -67,7 +67,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); min-
   font-family: var(--mono); font-size: 11px; padding: 3px 10px; border-radius: 4px;
   font-weight: 500;
 }
-.mode-badge.admin { background: rgba(200,245,90,0.15); color: var(--accent); border: 0.5px solid rgba(200,245,90,0.3); }
+.mode-badge.admin { background: rgba(232,90,47,0.15); color: var(--accent); border: 0.5px solid rgba(232,90,47,0.3); }
 .mode-badge.guest { background: rgba(255,255,255,0.06); color: var(--muted); border: 0.5px solid var(--border); }
 .logout-btn {
   background: none; border: 0.5px solid var(--border2); color: var(--muted); padding: 5px 12px;
@@ -101,10 +101,10 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); min-
 .field select option { background: var(--surface2); }
 .software-grid { display: flex; flex-wrap: wrap; gap: 8px; }
 .sw-chip { padding: 6px 12px; border-radius: 6px; background: var(--surface2); border: 0.5px solid var(--border); font-size: 13px; cursor: pointer; transition: all 0.15s; user-select: none; }
-.sw-chip.selected { background: rgba(200,245,90,0.12); border-color: var(--accent); color: var(--accent); }
+.sw-chip.selected { background: rgba(232,90,47,0.12); border-color: var(--accent); color: var(--accent); }
 .sw-chip:disabled, .sw-chip.readonly { pointer-events: none; }
 .submit-btn {
-  width: 100%; padding: 12px; background: var(--accent); color: #111; border: none;
+  width: 100%; padding: 12px; background: var(--accent); color: #fff; border: none;
   border-radius: 8px; font-family: var(--sans); font-size: 15px; font-weight: 700;
   cursor: pointer; transition: opacity 0.15s; margin-top: 8px;
 }
@@ -175,7 +175,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); min-
 <div id="login-screen">
   <div class="login-box">
     <div class="login-logo">
-      <h1>Salary Studio</h1>
+      <h1>xromosev</h1>
       <p>3D Motion Designer Tracker</p>
     </div>
     <div class="login-field">
@@ -192,7 +192,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); min-
 <div id="app">
   <div class="topbar">
     <div class="topbar-left">
-      <h1>Salary Studio</h1>
+      <h1>xromosev</h1>
       <span class="tag">3D Motion</span>
     </div>
     <div class="topbar-right">
@@ -226,6 +226,8 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); min-
             <option value="explainer">Explainer Video</option>
             <option value="reel">Showreel</option>
             <option value="social">Social Content</option>
+            <option value="site">Site Design</option>
+            <option value="logo_design">Logo Design</option>
             <option value="other">Другое</option>
           </select>
         </div>
@@ -303,9 +305,9 @@ let jobs = [];
 let currentPeriod = 'week';
 let timelineChartInst = null;
 
-const TYPE_LABELS = { motion:'Motion Design','3d':'3D Animation',vfx:'VFX',logo:'Logo Anim',explainer:'Explainer',reel:'Showreel',social:'Social',other:'Другое' };
-const SW_COLORS = ['#c8f55a','#5af5c8','#f5a85a','#f55a5a','#a85af5','#5ab4f5','#f55ab4','#f5e55a','#aaaaaa','#88f5e0'];
-const TYPE_COLORS = ['#c8f55a','#5af5c8','#f5a85a','#f55a5a','#a85af5','#5ab4f5','#f55ab4','#f5e55a'];
+const TYPE_LABELS = { motion:'Motion Design','3d':'3D Animation',vfx:'VFX',logo:'Logo Anim',explainer:'Explainer',reel:'Showreel',social:'Social',site:'Site Design',logo_design:'Logo Design',other:'Другое' };
+const SW_COLORS = ['#E85A2F','#5af5c8','#f5a85a','#f55a5a','#a85af5','#5ab4f5','#f55ab4','#f5e55a','#aaaaaa','#88f5e0'];
+const TYPE_COLORS = ['#E85A2F','#5af5c8','#f5a85a','#f55a5a','#a85af5','#5ab4f5','#f55ab4','#f5e55a'];
 
 function tryLogin() {
   const val = document.getElementById('pw-input').value;
@@ -490,7 +492,7 @@ function renderTimeline(filtered) {
   const data = sorted.map(([,v]) => Math.round(v));
   timelineChartInst = new Chart(canvas, {
     type: 'bar',
-    data: { labels, datasets: [{ data, backgroundColor:'rgba(200,245,90,0.25)', borderColor:'#c8f55a', borderWidth:1.5, borderRadius:4 }] },
+    data: { labels, datasets: [{ data, backgroundColor:'rgba(232,90,47,0.25)', borderColor:'#E85A2F', borderWidth:1.5, borderRadius:4 }] },
     options: {
       responsive: true, maintainAspectRatio: false,
       plugins: { legend: { display: false } },
