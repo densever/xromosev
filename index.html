@@ -10,7 +10,7 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg: #0e0e0e; --surface: #161616; --surface2: #1e1e1e; --surface3: #262626;
+  --bg: #0e0e0e; --surface: rgba(18,18,18,0.75); --surface2: rgba(22,22,22,0.80); --surface3: rgba(32,32,32,0.85);
   --border: rgba(255,255,255,0.08); --border2: rgba(255,255,255,0.14);
   --text: #f0ede8; --muted: #888; --muted2: #aaa;
   --accent: #FF3C00; --accent2: #5af5c8; --accent3: #f5a85a; --red: #f55a5a;
@@ -97,7 +97,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); min-
 .topbar-right { display: flex; align-items: center; gap: 10px; }
 
 .main { max-width: 900px; margin: 0 auto; padding: 24px 16px 60px; }
-.tabs { display: flex; gap: 4px; margin-bottom: 24px; background: var(--surface); border-radius: 10px; padding: 4px; }
+.tabs { display: flex; gap: 4px; margin-bottom: 24px; background: var(--surface); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-radius: 10px; padding: 4px; border: 0.5px solid var(--border); }
 .tab { flex: 1; padding: 8px 12px; border: none; background: none; color: var(--muted); font-family: var(--sans); font-size: 13px; font-weight: 500; border-radius: 7px; cursor: pointer; transition: all 0.15s; }
 .tab.active { background: var(--surface3); color: var(--text); }
 .tab:disabled { opacity: 0.3; cursor: not-allowed; }
@@ -109,14 +109,14 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); min-
 .field { display: flex; flex-direction: column; gap: 6px; }
 .field label { font-size: 11px; font-family: var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
 .field input, .field select, .field textarea {
-  background: var(--surface2); border: 0.5px solid var(--border2); color: var(--text);
+  background: rgba(255,255,255,0.06); border: 0.5px solid var(--border2); color: var(--text);
   border-radius: 8px; padding: 10px 12px; font-family: var(--sans); font-size: 14px;
   outline: none; transition: border 0.15s;
 }
 .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); }
 .field select option { background: var(--surface2); }
 .software-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-.sw-chip { padding: 6px 12px; border-radius: 6px; background: var(--surface2); border: 0.5px solid var(--border); font-size: 13px; cursor: pointer; transition: all 0.15s; user-select: none; }
+.sw-chip { padding: 6px 12px; border-radius: 6px; background: rgba(255,255,255,0.06); border: 0.5px solid var(--border2); font-size: 13px; cursor: pointer; transition: all 0.15s; user-select: none; }
 .sw-chip.selected { background: rgba(255,60,0,0.12); border-color: var(--accent); color: var(--accent); }
 .sw-chip.readonly { pointer-events: none; }
 .submit-btn {
@@ -128,7 +128,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); min-
 .submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
 .metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
-.metric { background: var(--surface); border-radius: 10px; padding: 14px 16px; border: 0.5px solid var(--border); }
+.metric { background: var(--surface); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-radius: 10px; padding: 14px 16px; border: 0.5px solid var(--border2); }
 .metric .m-label { font-size: 11px; font-family: var(--mono); color: var(--muted); margin-bottom: 6px; }
 .metric .m-val { font-size: 22px; font-weight: 700; letter-spacing: -1px; }
 .metric .m-sub { font-size: 12px; color: var(--muted); margin-top: 3px; font-family: var(--mono); }
@@ -140,7 +140,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); min-
 .p-tab { padding: 5px 14px; border-radius: 6px; border: 0.5px solid var(--border); background: none; color: var(--muted2); font-family: var(--mono); font-size: 12px; cursor: pointer; transition: all 0.15s; }
 .p-tab.active { background: var(--surface3); border-color: var(--border2); color: var(--text); }
 
-.chart-wrap { background: var(--surface); border-radius: 10px; border: 0.5px solid var(--border); padding: 16px; margin-bottom: 16px; }
+.chart-wrap { background: var(--surface); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-radius: 10px; border: 0.5px solid var(--border2); padding: 16px; margin-bottom: 16px; }
 .chart-title { font-size: 12px; font-family: var(--mono); color: var(--muted); margin-bottom: 14px; }
 .charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
 .rate-chart { position: relative; width: 100%; height: 140px; }
@@ -153,7 +153,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); min-
 .no-data { text-align: center; padding: 32px 0; color: var(--muted); font-size: 13px; font-family: var(--mono); }
 
 .jobs-list { display: flex; flex-direction: column; gap: 8px; }
-.job-row { background: var(--surface); border-radius: 8px; padding: 12px 14px; border: 0.5px solid var(--border); display: grid; grid-template-columns: 1fr auto auto auto; align-items: center; gap: 12px; }
+.job-row { background: var(--surface); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-radius: 8px; padding: 12px 14px; border: 0.5px solid var(--border2); display: grid; grid-template-columns: 1fr auto auto auto; align-items: center; gap: 12px; }
 .job-name { font-size: 14px; font-weight: 500; }
 .job-type { font-size: 11px; font-family: var(--mono); color: var(--muted); margin-top: 2px; }
 .job-price { font-size: 16px; font-weight: 700; color: var(--accent); font-family: var(--mono); }
@@ -162,7 +162,8 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); min-
 .job-del:hover { opacity: 1; color: var(--red); }
 .empty { text-align: center; padding: 48px 0; color: var(--muted); font-family: var(--mono); font-size: 13px; }
 
-.guest-banner { background: rgba(255,255,255,0.04); border: 0.5px solid var(--border2); border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; font-size: 13px; font-family: var(--mono); color: var(--muted); }
+.guest-banner { background: rgba(255,255,255,0.04); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 0.5px solid var(--border2); border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; font-size: 13px; font-family: var(--mono); color: var(--muted); }
+.form-card { background: rgba(14,14,14,0.60); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 0.5px solid var(--border2); border-radius: 16px; padding: 24px; margin-bottom: 0; }
 .blurred { filter: blur(6px); pointer-events: none; user-select: none; }
 
 @media (max-width: 600px) {
@@ -224,7 +225,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); min-
     </div>
 
     <div id="tab-add" class="section active">
-      <div class="form-grid">
+      <div class="form-card"><div class="form-grid">
         <div class="field"><label>Название проекта</label><input type="text" id="job-name" placeholder="Рекламный ролик..."></div>
         <div class="field"><label>Тип работы</label>
           <select id="job-type">
